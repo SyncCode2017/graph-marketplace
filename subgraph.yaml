@@ -1,0 +1,38 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Marketplace
+    network: mumbai
+    source:
+      address: "0x180c51D5a7263F6F2b0053BC5e9F80614bfF2E40"
+      abi: Marketplace
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CancelFilledOrder
+        - CancelOpenOrder
+        - OrderCreated
+        - OrderDelivered
+        - OrderFilled
+        - Withdraw
+      abis:
+        - name: Marketplace
+          file: ./abis/Marketplace.json
+      eventHandlers:
+        - event: CancelFilledOrder(indexed uint256,indexed address,address,string,indexed uint256,uint256,uint256)
+          handler: handleCancelFilledOrder
+        - event: CancelOpenOrder(indexed uint256,indexed address,string,indexed uint256,uint256,uint256)
+          handler: handleCancelOpenOrder
+        - event: OrderCreated(indexed uint256,indexed address,string,indexed uint256,uint256,uint256)
+          handler: handleOrderCreated
+        - event: OrderDelivered(indexed uint256,indexed address,address,string,indexed uint256,uint256,uint256)
+          handler: handleOrderDelivered
+        - event: OrderFilled(indexed uint256,indexed address,address,string,indexed uint256,uint256,uint256)
+          handler: handleOrderFilled
+        - event: Withdraw(indexed address,indexed uint256)
+          handler: handleWithdraw
+      file: ./src/marketplace.ts
