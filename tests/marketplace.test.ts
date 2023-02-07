@@ -5,7 +5,7 @@ import {
   clearStore,
   beforeAll,
   afterAll
-} from "matchstick-as/assembly/index"
+} from "matchstick-as"
 import { BigInt, Address } from "@graphprotocol/graph-ts"
 import { CancelFilledOrder } from "../generated/schema"
 import { CancelFilledOrder as CancelFilledOrderEvent } from "../generated/Marketplace/Marketplace"

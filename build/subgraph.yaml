@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: Marketplace
@@ -22,16 +22,21 @@ dataSources:
         - Withdraw
       abis:
         - name: Marketplace
-          file: ./abis/Marketplace.json
+          file: Marketplace/abis/Marketplace.json
       eventHandlers:
-        - event: CancelFilledOrder(indexed uint256,indexed address,address,string,indexed uint256,uint256,uint256)
+        - event: CancelFilledOrder(indexed uint256,indexed address,address,string,indexed
+            uint256,uint256,uint256)
           handler: handleCancelFilledOrder
-        - event: CancelOpenOrder(indexed uint256,indexed address,string,indexed uint256,uint256,uint256)
+        - event: CancelOpenOrder(indexed uint256,indexed address,string,indexed
+            uint256,uint256,uint256)
           handler: handleCancelOpenOrder
-        - event: OrderCreated(indexed uint256,indexed address,string,indexed uint256,uint256,uint256)
+        - event: OrderCreated(indexed uint256,indexed address,string,indexed
+            uint256,uint256,uint256)
           handler: handleOrderCreated
-        - event: OrderDelivered(indexed uint256,indexed address,address,string,indexed uint256,uint256,uint256)
+        - event: OrderDelivered(indexed uint256,indexed address,address,string,indexed
+            uint256,uint256,uint256)
           handler: handleOrderDelivered
-        - event: OrderFilled(indexed uint256,indexed address,address,string,indexed uint256,uint256,uint256)
+        - event: OrderFilled(indexed uint256,indexed address,address,string,indexed
+            uint256,uint256,uint256)
           handler: handleOrderFilled
-      file: ./src/marketplace.ts
+      file: Marketplace/Marketplace.wasm
